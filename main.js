@@ -26,21 +26,20 @@ submitBtn.addEventListener("click", myFunction => {
     options.appendChild(trashBtn);
     //appendind div into parent div
     toDoList.appendChild(options);
-    //clear all button
-    clearAll.addEventListener("click", function removeAll(){
-        let item = options.parentNode;
-        item.removeChild(options);
-    });
 });
- //eventListener of delete and check todos
- toDoList.addEventListener("click", function deleteCheck(e){
-    const item = e.target;
-    if(item.classList[0] === "delete-option"){
-        const takeParent = item.parentElement;
-        takeParent.remove();
-    }
-    if(item.classList[0] === "mark-option"){
-        const takeParent = item.parentElement;
-        takeParent.classList.toggle("marked")
-    }
+//set modal
+clearAll.addEventListener("click", function modalFunction() {
+    const modalBox = document.querySelector(".modal-box");
+    modalBox.style.visibility = "visible";
+    //set no button
+    const noBtn = document.getElementById("no-btn");
+    noBtn.addEventListener("click", function closeModal() {
+        modalBox.style.visibility = "hidden";
+    })
+    //set yes button
+    const yesBtn = document.getElementById("yes-btn");
+    yesBtn.addEventListener("click", function clearList(){
+        toDoList.remove();
+        modalBox.style.visibility = "hidden";
+    })
 })

@@ -7,7 +7,7 @@ body{
     background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
     background-repeat: no-repeat;
     min-height: 100vh;
-    direction: rtl;
+    /* direction: rtl; */
 }
 .heading{
     color: rgb(11, 11, 63);
@@ -81,4 +81,10 @@ body{
 .marked{
     text-decoration: line-through;
     opacity: 0.5;
+}
+.modal-box{
+    visibility: hidden;
+    background-color: #bac8e0;
+    text-align: center;
+    justify-content: center;
 }
