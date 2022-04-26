@@ -88,3 +88,6 @@ body{
     text-align: center;
     justify-content: center;
 }
+.clear-all{
+    background-color: rgb(223, 97, 39);
+}

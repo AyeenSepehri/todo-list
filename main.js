@@ -1,9 +1,9 @@
 //selectors
 const inputTodo = document.getElementById("todos");
 const submitBtn = document.querySelector(".submit-txt");
-const valueTodo = document.getElementById(".options");
 const toDoList = document.querySelector(".todo-list");
 const clearAll = document.querySelector(".clear-all");
+
 //eventListener of add todos
 submitBtn.addEventListener("click", myFunction => {
     //create div
@@ -26,7 +26,24 @@ submitBtn.addEventListener("click", myFunction => {
     options.appendChild(trashBtn);
     //appendind div into parent div
     toDoList.appendChild(options);
+    //clear value after submit
+    inputTodo.value = "";
 });
+
+//set delete check buttons
+toDoList.addEventListener("click", function deleteChech(e) {
+    const item = e.target;
+    const findParent = item.parentNode;
+    //delete item button
+    if (item.classList[0] === "delete-option"){
+        findParent.remove();
+    }
+    //check item button
+    if (item.classList[0] === "mark-option"){
+        findParent.classList.toggle("marked")
+    }
+})
+
 //set modal
 clearAll.addEventListener("click", function modalFunction() {
     const modalBox = document.querySelector(".modal-box");
@@ -38,8 +55,10 @@ clearAll.addEventListener("click", function modalFunction() {
     })
     //set yes button
     const yesBtn = document.getElementById("yes-btn");
-    yesBtn.addEventListener("click", function clearList(){
-        toDoList.remove();
+    yesBtn.addEventListener("click", function clearList() {
+        while (toDoList.hasChildNodes()) {
+            toDoList.removeChild(toDoList.firstChild);
+        }
         modalBox.style.visibility = "hidden";
     })
 })
